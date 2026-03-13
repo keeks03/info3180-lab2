@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, request, redirect, url_for, flash
+import datetime
 
 
 ###
@@ -33,8 +34,7 @@ def send_text_file(file_name):
 def add_header(response):
     """
     Add headers to both force latest IE rendering engine or Chrome Frame,
-    and also tell the browser not to cache the rendered page. If we wanted
-    to we could change max-age to 600 seconds which would be 10 minutes.
+    and also tell the browser not to cache the rendered page.
     """
     response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
     response.headers['Cache-Control'] = 'public, max-age=0'
@@ -45,3 +45,24 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+
+def format_date_joined(date):
+    return date.strftime("%B, %Y")
+
+
+@app.route('/profile')
+def profile():
+    date_joined = datetime.date(2021, 8, 7)
+    formatted_date = format_date_joined(date_joined)
+
+    return render_template(
+        'profile.html',
+        full_name="Akeelia Phillibert",
+        username="@Keeks03",
+        location="Kingston, Jamaica",
+        bio="I have a relentless thirst for new experiences and knowledge which is a defining aspect of my personality. Computer Science is a field that ignites my enthusiasm for tackling complex problems and uncovering innovative solutions. Additionally, I hold a deep fascination for the world of Digital Media.",
+        posts=25,
+        following=300,
+        followers=309,
+        date_joined=formatted_date
+    )

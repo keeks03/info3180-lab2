@@ -1,3 +1,31 @@
 body {
     padding-top: 5rem;
 }
+.profile-card {
+    max-width: 350px;
+    margin: 40px auto;
+    padding: 25px;
+    text-align: center;
+    background: #f5f5f5;
+    border-radius: 12px;
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.follow-btn {
+    background: #28a745;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+}
